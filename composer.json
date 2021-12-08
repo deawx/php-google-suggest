@@ -1,0 +1,25 @@
+{
+    "name": "opendisk/php-google-suggest",
+    "type": "library",
+	"description": "Google keyword suggestion scraper",
+	"license": "MIT",
+    "authors": [
+        {
+            "name": "Mochammad Masbuchin",
+            "email": "buchin@dropsugar.com"
+        }
+    ],
+	"require": {
+		"php": "^7.3|^8.0"
+	},
+    "require-dev": {
+        "kahlan/kahlan": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Opendisk\\GoogleSuggest\\": "src/"
+        }
+    },
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
