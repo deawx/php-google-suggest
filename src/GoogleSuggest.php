@@ -6,11 +6,10 @@ class GoogleSuggest
 {
 	public static function grab($keyword = '', $lang = '', $country = '', $source = '', $proxy = '')
 	{
-        $url = 'http://google.com/complete/search?';
-        $out = [];
+        $url = 'https://suggestqueries.google.com/complete/search?';
 
         $query = [
-            'output' => 'toolbar',
+            'client' => 'chrome',
             'q' => $keyword,
         ];
 
@@ -36,12 +35,11 @@ class GoogleSuggest
         );
 
         $cxContext = stream_context_create($aContext);
-		if($content = trim(file_get_contents($url, false, $cxContext)));
+		
+	if($content = trim(file_get_contents($url, false, $cxContext)));
         {
-            $xml = simplexml_load_string(utf8_encode($content));
-
-            foreach($xml->CompleteSuggestion as $sugg)
-                $out[] = (string)$sugg->suggestion['data'];
+            $json = json_decode($content,true);
+	    $out = $json[1]??'';
         }
 
         return $out;
